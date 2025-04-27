@@ -1,0 +1,12 @@
+markitdown[all]
+langchain
+langchain-community
+langchain_huggingface
+langchain_ollama
+faiss-cpu
+sentence-transformers
+pytesseract
+pdf2image
+Pillow
+torch
+ollama
