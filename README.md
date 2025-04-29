@@ -104,10 +104,16 @@ The system will automatically:
 ### 3. Example Usage in Python
 ```python
 from src.markitdown_ocr_rag import MarkitdownOCRLocalRAG
+from src.rag_chat import start_rag_chat
 
 pipeline = MarkitdownOCRLocalRAG()
-answer = pipeline.process_document("example.pdf", "Summarize the key points.")
+# 1) استخراج + إعادة تنظيم المضمون
+organized_md = pipeline.extract_and_reorganize("example.pdf")
+# 2) بناء RAG وسؤال الموديل
+qa_chain = start_rag_chat(organized_md, pipeline.ollama_model)
+answer = qa_chain.invoke({"query": "Summarize the key points."})["result"]
 print(answer)
+
 ```
 
 ---
